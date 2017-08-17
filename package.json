@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ErlendEllingsen/elixia-sms-bot#readme",
   "dependencies": {
+    "express": "^4.15.4",
     "request": "^2.81.0"
   }
 }
