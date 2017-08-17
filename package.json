@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ErlendEllingsen/elixia-sms-bot#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "request": "^2.81.0"
   }
 }
