@@ -67,7 +67,7 @@ module.exports = function(receiver, body, config, req, res) {
 
         var response = null;
 
-        if (self.body.toLowerCase().indexOf('tider ') != -1) {
+        if (self.body.toLowerCase().indexOf('tider ') != -1 || self.body.toLowerCase().indexOf('åpningstider ') != -1) {
             response = self.replies.openingHours();
         }
 
