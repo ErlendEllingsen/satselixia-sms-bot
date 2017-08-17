@@ -2,7 +2,7 @@
 ______
 SMS two-way communication bot that sends information about SATS/Elixia centers (Norwegian fitness centers).
 
-[**SATS/Elixia**](http://satselixia.no) is a norwegian fitness center group with over 60+ fitness centers in Norway. Many of the centers have different opening hours, and I've personally spent a lot of time looking up their opening hours on my safari.
+[**SATS/Elixia**](http://satselixia.no) is a norwegian fitness center group with over 60+ fitness centers in Norway. Many of the centers have different opening hours, and I've personally spent a lot of time looking up their opening hours on my mobile phone.
 
 As a fun little project (and since I'm lazy) I decided to create a SMS bot that receives some simple commands and responds with various useful information.
 
