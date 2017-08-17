@@ -10,6 +10,8 @@ So far I've only added opening hours. On the roadmap is the ability to receive i
 
 The bot is currently up and running, but there's no live demo since SMS is quite expensive and publishing it here could end up leaving me with a hefty bill.
 
+*If you desperately want to try it live, drop me an e-mail and I'll send you the number*
+
 ## What it does
 The bot queries SATS/ELIXIA's home page and fetches/parses all of their fitness centers. 
 
