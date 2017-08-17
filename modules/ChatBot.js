@@ -150,14 +150,23 @@ module.exports = function(receiver, body, config, req, res) {
                 var openingDay = openingDays[i];
                 var name = openingDay.split('<td class=\"col-md-6\">')[1].
                                       split('</td>')[0].trim();
+
                 var hours = openingDay.split('<span class=\"pull-right\">')[1].
-                split('</span>')[0];    
-                hours = hours.split('-');
+                                      split('</span>')[0];
 
-                var opening = hours[0].trim();
-                var closing = hours[1].trim();
+                var openingHours = null;
+                if (hours.toLowerCase().indexOf('stengt') != -1) {
+                    openingHours = 'Stengt';
+                } else {
+                    hours = hours.split('-');
 
-                hours_export += (i == 0 ? '' : '\r\n') + name + ': ' + opening + ' - ' + closing;
+                    var opening = hours[0].trim();
+                    var closing = hours[1].trim();
+    
+                    openingHours = opening + ' - ' + closing;
+                }
+
+                hours_export += (i == 0 ? '' : '\r\n') + name + ': ' + openingHours;
 
             }
 
