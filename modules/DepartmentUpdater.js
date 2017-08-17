@@ -1,3 +1,4 @@
+var fs = require('fs');
 var request = require('request');
 
 /**
@@ -52,6 +53,9 @@ module.exports = function(config) {
             }
 
             config.departments = fitnessCenterArray;
+
+            fs.writeFileSync('./body.json', JSON.stringify(config.departments));
+            
             console.log('[' + new Date().toString() + '] Loaded ' + config.departments.length + ' fitness centers..');
         
             //end request

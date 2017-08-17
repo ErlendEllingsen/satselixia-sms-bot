@@ -30,7 +30,10 @@ app.post('/inbound', function (req, res) {
 
     if (req.body.From == undefined || req.body.Body == undefined) return; //Don't even bother logging.
     //Length > 20 probably means some sort of silly attempt at damaging our little pretty service.
-    if (req.body.From.length > 20 || req.body.Body.length > 20) return; //Same as above, don't bother
+    if (req.body.From.length > 50 || req.body.Body.length > 50) {
+        console.log('[' + new Date().toLocaleString() + '] Blocked incoming. Due to length. From: ' + req.body.From.length + ' Body: ' + req.body.Body.length);
+        return; //Same as above, don't bother
+    }
 
     var cb = new ChatBot(req.body.From, req.body.Body, config, req, res);
     console.log('[' + new Date().toLocaleString() + '] New incoming msg from ' + req.body.From + ': ' + req.body.Body);

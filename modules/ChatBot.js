@@ -1,11 +1,64 @@
 var request = require('request');
 
+
+/**
+ * External functions for calculating Levenshtein distance (https://en.wikipedia.org/wiki/Levenshtein_distance) on two strings.
+ * Thanks to @overlord1234 at Stack Overflow.
+ * Link to source: https://stackoverflow.com/a/36566052
+ * 
+ */
+
+function editDistance(s1, s2) {
+    s1 = s1.toLowerCase();
+    s2 = s2.toLowerCase();
+
+    var costs = new Array();
+    for (var i = 0; i <= s1.length; i++) {
+        var lastValue = i;
+        for (var j = 0; j <= s2.length; j++) {
+        if (i == 0)
+            costs[j] = j;
+        else {
+            if (j > 0) {
+            var newValue = costs[j - 1];
+            if (s1.charAt(i - 1) != s2.charAt(j - 1))
+                newValue = Math.min(Math.min(newValue, lastValue),
+                costs[j]) + 1;
+            costs[j - 1] = lastValue;
+            lastValue = newValue;
+            }
+        }
+        }
+        if (i > 0)
+        costs[s2.length] = lastValue;
+    }
+    return costs[s2.length];
+
+    //end editDistance
+}
+
+function similarity(s1, s2) {
+    var longer = s1;
+    var shorter = s2;
+    if (s1.length < s2.length) {
+        longer = s2;
+        shorter = s1;
+    }
+    var longerLength = longer.length;
+    if (longerLength == 0) {
+        return 1.0;
+    }
+    return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
+
+    //end similarity
+}
+
+
 module.exports = function(receiver, body, config, req, res) {
     var self = this;
 
     this.receiver = receiver;
     this.body = body; 
-
 
     //--- Departments ---
     this.departments = config.departments;
@@ -30,15 +83,19 @@ module.exports = function(receiver, body, config, req, res) {
 
     this.respond = function(response) {
 
+        //Send sms!
         config.twilio.client.messages.create({
             body: response,
             to: self.receiver,  // Text this number
             from: config.twilio.from // From a valid Twilio number
         });
 
+        //Log event
+        console.log('[' + new Date().toLocaleString() + '] Responded to ' + self.receiver + ' with ' + response);
+
+        //Respond to server
         res.json({
-            status: true,
-            resonse: response
+            status: true
         });
 
         //end
@@ -56,16 +113,22 @@ module.exports = function(receiver, body, config, req, res) {
 
     this.replies.openingHours = function() {
 
-        var searchPlace = self.body.split(' ')[1].trim().toLowerCase();
+        var searchStr = self.body.split(' ');
+        searchStr.splice(0,1);
+        searchStr = searchStr.join(' ');
 
-        var departmentObj = self.departments.filter(function ( obj ) {
-            return obj.code === searchPlace;
-        })[0];
+        //--- Search through all departments ----
+        var departmentObj = null;
+        for (var i = 0; i < config.departments.length; i++) {
+
+            var matchDept = config.departments[i];
+            var foundSimilarity = similarity(searchStr, matchDept.name);
+            if (foundSimilarity >= config.similarityTreshold) departmentObj = matchDept;
+        }
+
 
         //Did we match?
-        if (departmentObj == undefined) return 'Ukjent treningssenter.'; 
-
-        console.log(departmentObj);
+        if (departmentObj == null) return 'Ukjent treningssenter.'; 
 
         request(departmentObj.url, function(err, data){
 
