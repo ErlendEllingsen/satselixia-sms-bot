@@ -46,7 +46,7 @@ Søndag: 10:00 - 20:00
 ```
 
 ### Screenshot
-<img src="http://i.imgur.com/tkNrPUK.png" height="200px">
+<img src="http://i.imgur.com/tkNrPUK.png" height="300px">
 
 ## Installation
 Run `npm install` to install required dependencies.
