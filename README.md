@@ -1,4 +1,4 @@
-# elixia-sms-bot
+# satselixia-sms-bot
 ______
 SMS two-way communication bot that sends information about SATS/Elixia centers (Norwegian fitness centers).
 
