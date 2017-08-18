@@ -48,7 +48,7 @@ Søndag: 10:00 - 20:00
 ```
 
 ### Screenshot
-<img src="http://i.imgur.com/tkNrPUK.png" height="300px">
+<img src="http://i.imgur.com/ClF0r3p.png" height="300px">
 
 ## Available commands
 * `tider <department>` returns opening hours for specified department.
