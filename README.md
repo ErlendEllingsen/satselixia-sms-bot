@@ -1,14 +1,16 @@
-# elixia-sms-bot
+# satselixia-sms-bot
 ______
 SMS two-way communication bot that sends information about SATS/Elixia centers (Norwegian fitness centers).
 
-[**SATS/Elixia**](http://satselixia.no) is a norwegian fitness center group with over 60+ fitness centers in Norway. Many of the centers have different opening hours, and I've personally spent a lot of time looking up their opening hours on my safari.
+[**SATS/Elixia**](http://satselixia.no) is a norwegian fitness center group with over 60+ fitness centers in Norway. Many of the centers have different opening hours, and I've personally spent a lot of time looking up their opening hours on my mobile phone.
 
 As a fun little project (and since I'm lazy) I decided to create a SMS bot that receives some simple commands and responds with various useful information.
 
 So far I've only added opening hours. On the roadmap is the ability to receive information about upcoming / current group sessions. (E.g. ask the bot: "Are the treadmills currently in use?").
 
 The bot is currently up and running, but there's no live demo since SMS is quite expensive and publishing it here could end up leaving me with a hefty bill.
+
+*If you desperately want to try it live, drop me an e-mail and I'll send you the number*
 
 ## What it does
 The bot queries SATS/ELIXIA's home page and fetches/parses all of their fitness centers. 
