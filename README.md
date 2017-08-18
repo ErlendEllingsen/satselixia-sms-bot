@@ -6,7 +6,7 @@ SMS two-way communication bot that sends information about SATS/Elixia centers (
 
 As a fun little project (and since I'm lazy) I decided to create a SMS bot that receives some simple commands and responds with various useful information.
 
-So far I've only added opening hours. On the roadmap is the ability to receive information about upcoming / current group sessions. (E.g. ask the bot: "Are the treadmills currently in use?").
+<strike>So far I've only added opening hours. On the roadmap is the ability to receive information about upcoming / current group sessions. (E.g. ask the bot: "Are the treadmills currently in use?").</strike> **Added as of 1.2 😉🏃**
 
 The bot is currently up and running, but there's no live demo since SMS is quite expensive and publishing it here could end up leaving me with a hefty bill.
 
@@ -49,6 +49,14 @@ Søndag: 10:00 - 20:00
 
 ### Screenshot
 <img src="http://i.imgur.com/tkNrPUK.png" height="300px">
+
+## Available commands
+* `tider <department>` returns opening hours for specified department.
+* `åpningstider <department>` alias for `tider`
+* `møllestatus <department>` returns group classes for today that involves running (aka when treadsmills are in use)
+* `møller <department>` alias for `møllestatus`
+* `gruppetimer <department>` returns all group classes for today.
+* `timer <department>` aslias for `gruppetimer`
 
 ## Installation
 Run `npm install` to install required dependencies.
