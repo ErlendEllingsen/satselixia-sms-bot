@@ -6,7 +6,7 @@ SMS two-way communication bot that sends information about SATS/Elixia centers (
 
 As a fun little project (and since I'm lazy) I decided to create a SMS bot that receives some simple commands and responds with various useful information.
 
-<strike>So far I've only added opening hours. On the roadmap is the ability to receive information about upcoming / current group sessions. (E.g. ask the bot: "Are the treadmills currently in use?").</strike> **Added as of 1.2 😉🏃**
+<strike>So far I've only added opening hours. On the roadmap is the ability to receive information about upcoming / current group sessions. (E.g. ask the bot: "Are the treadmills currently in use?").</strike> **Added as of 1.2 🏃**
 
 The bot is currently up and running, but there's no live demo since SMS is quite expensive and publishing it here could end up leaving me with a hefty bill.
 
