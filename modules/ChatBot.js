@@ -94,9 +94,8 @@ module.exports = function(receiver, body, config, req, res) {
         console.log('[' + new Date().toLocaleString() + '] Responded to ' + self.receiver + ' with ' + response);
 
         //Respond to server
-        res.json({
-            status: true
-        });
+        res.set('Content-Type', 'text/xml');
+        res.send('<?xml version="1.0" encoding="UTF-8"?><Response/>');
 
         //end
     }
